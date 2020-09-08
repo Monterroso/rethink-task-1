@@ -116,6 +116,16 @@ function PlaintextFilesChallenge() {
     console.log("Writing... ", file.name);
 
     // TODO: Write the file to the `files` array
+  
+    setActiveFile(file)
+
+    setFiles(prevFiles => prevFiles.map(prevFile => {
+      if (prevFile !== activeFile) {
+        return prevFile
+      } else {
+        return file
+      }
+    }))
   };
 
   const Editor = activeFile ? REGISTERED_EDITORS[activeFile.type] : null;
